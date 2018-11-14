@@ -1,4 +1,7 @@
 package app.repository;
 
-public class UserRepo {
+import app.model.User;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface UserRepo extends MongoRepository<User, String> {
 }
