@@ -30,8 +30,8 @@ public class UserControllerTest {
 
     @Test
     public void getUser() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/user").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/user/greet"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Hello Pranav !")));
+                .andExpect(content().string(equalTo("Hey, there !!")));
     }
 }
