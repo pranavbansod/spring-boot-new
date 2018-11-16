@@ -2,6 +2,7 @@ package app.controller;
 
 import app.model.User;
 import app.repository.UserRepository;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,11 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User read(@PathVariable String id) {
         return userRepository.findOneById(id);
+    }
+
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    public String all(){
+        return new Gson().toJson(userRepository.findAll());
     }
 
     @RequestMapping(value = "/greet")
