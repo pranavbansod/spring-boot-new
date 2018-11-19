@@ -24,11 +24,6 @@ public class UserController {
         return userRepository.findOneById(id);
     }
 
-    @RequestMapping(value = "/all",method = RequestMethod.GET)
-    public String all(){
-        return new Gson().toJson(userRepository.findAll());
-    }
-
     @RequestMapping(value = "/greet")
     public String greet() {
         return "Hey, there !!";

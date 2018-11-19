@@ -10,10 +10,9 @@ let users = {
   view: function () {
     return [
       m('h1', 'All Users'),
-      m('button', "Create User"),
+      m('button',{href: '/createUser', oncreate: m.route.link}, "Create User"),
       m('div', userReg.users.map(function (user) {
         return m('li',m('a', {
-          href: '/user/' + user.id
         },user.id + "--" +  user.name))
       }))
     ]
