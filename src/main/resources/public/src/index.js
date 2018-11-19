@@ -1,9 +1,11 @@
-var m = require('mithril');
+const m = require('mithril');
 
-var users = require("./view/users");
-var createUser = require("./view/createUser");
+const users = require("./view/users");
+const createUser = require("./view/createUser");
+const viewUser = require("./view/viewUser");
 
 m.route(document.body,"/users",{
   "/users":users,
+  "/user/:userId":viewUser,
   "/createUser":createUser
 });

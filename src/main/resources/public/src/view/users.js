@@ -13,6 +13,8 @@ let users = {
       m('button',{href: '/createUser', oncreate: m.route.link}, "Create User"),
       m('div', userReg.users.map(function (user) {
         return m('li',m('a', {
+          href: '/user/' + user.id,
+          oncreate: m.route.link,
         },user.id + "--" +  user.name))
       }))
     ]
