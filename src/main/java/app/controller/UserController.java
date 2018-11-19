@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -22,6 +24,11 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User read(@PathVariable String id) {
         return userRepository.findOneById(id);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List <User> all(){
+        return userRepository.findAll();
     }
 
     @RequestMapping(value = "/greet")
