@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -r src --output bin/app.js -d --watch"
+    "start": "webpack -r src --output bin/app.js -d --watch",
+    "pack-assets": "webpack -r src --output bin/app.js --mode production"
   },
   "keywords": [],
   "author": "",
