@@ -1,17 +1,17 @@
 const m = require("mithril");
 
-let user = {
+let campaign = {
   id:"",
   name:"",
   load:function (id) {
     return m.request({
       method: 'get',
-      url: `/user/${id}`
+      url: `/campaign/${id}`
     }).then(function (res) {
-      user.id = res.id;
-      user.name = res.name;
+      campaign.id = res.id;
+      campaign.name = res.name;
     })
   }
 };
 
-module.exports = user;
+module.exports = campaign;

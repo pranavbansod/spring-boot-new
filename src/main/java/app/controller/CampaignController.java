@@ -1,8 +1,7 @@
 package app.controller;
 
-import app.model.User;
-import app.repository.UserRepository;
-import com.google.gson.Gson;
+import app.model.Campaign;
+import app.repository.CampaignRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -10,25 +9,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/campaign")
+public class CampaignController {
 
     @Autowired
-    UserRepository userRepository;
+    CampaignRepository campaignRepository;
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody User user) {
-        userRepository.save(user);
+    public void create(@RequestBody Campaign campaign) {
+        campaignRepository.save(campaign);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User read(@PathVariable String id) {
-        return userRepository.findOneById(id);
+    public Campaign read(@PathVariable String id) {
+        return campaignRepository.findOneById(id);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List <User> all(){
-        return userRepository.findAll();
+    public List <Campaign> all(){
+        return campaignRepository.findAll();
     }
 
     @RequestMapping(value = "/greet")

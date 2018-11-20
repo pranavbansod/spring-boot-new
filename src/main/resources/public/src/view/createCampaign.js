@@ -1,4 +1,4 @@
-var m = require('mithril');
+const m = require('mithril');
 
 
 const formState = {
@@ -12,12 +12,12 @@ const formState = {
   }
 };
 
-const createUser = {
+const createCampaign = {
   view:function () {
     return [
-      m('h3',"Add User"),
+      m('h3',"Add Campaign"),
       m("label.label", "Id"),
-      m("input.number.input[type=text][placeholder=Id]",{
+      m("input.id.input[type=text][placeholder=Id]",{
         oninput: m.withAttr('value',formState.setId)
       }),
       m("label.label", "Name"),
@@ -29,7 +29,7 @@ const createUser = {
         onclick:function () {
           return m.request({
             method: 'post',
-            url: '/user',
+            url: '/campaign',
             data: {'id': formState.id, 'name': formState.name}
           }).then(function () {
             window.location = '/'
@@ -41,4 +41,4 @@ const createUser = {
 };
 
 
-module.exports = createUser;
+module.exports = createCampaign;

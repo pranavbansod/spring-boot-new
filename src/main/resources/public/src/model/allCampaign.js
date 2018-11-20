@@ -1,15 +1,15 @@
 const m = require('mithril');
 
-let userReg = {
-  users:[],
+let allCampaign = {
+  campaigns:[],
   fetch:function () {
     return m.request({
       method: 'get',
-      url: '/user/all'
+      url: '/campaign/all'
     }).then(function (result) {
-      userReg.users = result;
+      allCampaign.campaigns = result;
     })
   }
 };
 
-module.exports = userReg;
+module.exports = allCampaign;

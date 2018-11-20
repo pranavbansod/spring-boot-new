@@ -2,7 +2,7 @@ package app.model;
 
 import org.springframework.data.annotation.Id;
 
-public class User {
+public class Campaign {
     @Id
     private String id;
     private String name;
@@ -11,7 +11,7 @@ public class User {
         return name;
     }
 
-    public User setName(String name) {
+    public Campaign setName(String name) {
         this.name = name;
         return this;
     }
@@ -20,7 +20,7 @@ public class User {
         return id;
     }
 
-    public User setId(String id) {
+    public Campaign setId(String id) {
         this.id = id;
         return this;
     }

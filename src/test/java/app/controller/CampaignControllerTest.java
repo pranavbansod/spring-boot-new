@@ -1,13 +1,11 @@
 package app.controller;
 
-import app.model.User;
-import app.repository.UserRepository;
+import app.repository.CampaignRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,9 +16,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -29,26 +25,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerTest {
+public class CampaignControllerTest {
 
     private MockMvc mvc;
 
     @Mock
-    private UserRepository userRepository;
+    private CampaignRepository campaignRepository;
 
     @InjectMocks
-    private UserController userController;
+    private CampaignController campaignController;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        mvc = MockMvcBuilders.standaloneSetup(userController).build();
+        mvc = MockMvcBuilders.standaloneSetup(campaignController).build();
     }
 
     @Test
     public void getGreet() throws Exception {
-        RequestBuilder getGreetRequest = MockMvcRequestBuilders.get("/user/greet");
+        RequestBuilder getGreetRequest = MockMvcRequestBuilders.get("/campaign/greet");
 
         mvc.perform(getGreetRequest)
                 .andExpect(status().isOk())
@@ -56,29 +52,29 @@ public class UserControllerTest {
     }
 
     @Test
-    public void postUser() throws Exception {
-        String userData = "{\"id\":\"01\",\"name\":\"Pranav\"}";
+    public void postCampaign() throws Exception {
+        String campaign = "{\"id\":\"01\",\"name\":\"Pranav\"}";
 
-        RequestBuilder postUserRequest = MockMvcRequestBuilders.post("/user").content(userData);
-        mvc.perform(postUserRequest).andReturn();
+        RequestBuilder postCampaignRequest = MockMvcRequestBuilders.post("/campaign").content(campaign);
+        mvc.perform(postCampaignRequest).andReturn();
 
 
-//        verify(userRepository,times(1)).save(Mockito.any(User.class));
+//        verify(campaignRepository,times(1)).save(Mockito.any(Campaign.class));
     }
 
     @Test
-    public void getUser() throws Exception {
-        RequestBuilder getUser = MockMvcRequestBuilders.get("/user/01").accept(MediaType.APPLICATION_JSON);
-        mvc.perform(getUser);
+    public void getCampaign() throws Exception {
+        RequestBuilder getCampaign = MockMvcRequestBuilders.get("/campaign/01").accept(MediaType.APPLICATION_JSON);
+        mvc.perform(getCampaign);
 
-        verify(userRepository,times(1)).findOneById("01");
+        verify(campaignRepository,times(1)).findOneById("01");
     }
 
     @Test
     public void getAll() throws Exception {
-        RequestBuilder getUser = MockMvcRequestBuilders.get("/user/all").accept(MediaType.APPLICATION_JSON);
-        mvc.perform(getUser);
+        RequestBuilder getCampaign = MockMvcRequestBuilders.get("/campaign/all").accept(MediaType.APPLICATION_JSON);
+        mvc.perform(getCampaign);
 
-        verify(userRepository,times(1)).findAll();
+        verify(campaignRepository,times(1)).findAll();
     }
 }

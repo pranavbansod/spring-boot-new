@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 brew install heroku/brew/heroku
-heroku create spring-boot-crud-user
+heroku create spring-boot-campaign
 
 git add ./src/main/resources/public
 git commit -m "bundled assets"
