@@ -6,10 +6,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -29,7 +28,7 @@ public class CampaignControllerTest {
     private MockMvc mvc;
 
     @Mock
-    private CampaignRepository campaignRepository;
+    private CampaignService campaignService;
 
     @InjectMocks
     private CampaignController campaignController;
@@ -54,11 +53,11 @@ public class CampaignControllerTest {
     public void postCampaign() throws Exception {
         String campaign = "{\"id\":\"01\",\"name\":\"Pranav\"}";
 
-        RequestBuilder postCampaignRequest = MockMvcRequestBuilders.post("/campaign").content(campaign);
-        mvc.perform(postCampaignRequest).andReturn();
+        RequestBuilder postCampaignRequest = MockMvcRequestBuilders.post("/campaign").contentType(MediaType.APPLICATION_JSON).content(campaign);
+        mvc.perform(postCampaignRequest)
+                .andExpect(status().isOk());
 
-
-//        verify(campaignRepository,times(1)).save(Mockito.any(Campaign.class));
+        verify(campaignService,times(1)).create(Mockito.any(Campaign.class));
     }
 
     @Test
@@ -66,7 +65,7 @@ public class CampaignControllerTest {
         RequestBuilder getCampaign = MockMvcRequestBuilders.get("/campaign/01").accept(MediaType.APPLICATION_JSON);
         mvc.perform(getCampaign);
 
-        verify(campaignRepository,times(1)).findOneById("01");
+        verify(campaignService, times(1)).getById("01");
     }
 
     @Test
@@ -74,6 +73,6 @@ public class CampaignControllerTest {
         RequestBuilder getCampaign = MockMvcRequestBuilders.get("/campaign/all").accept(MediaType.APPLICATION_JSON);
         mvc.perform(getCampaign);
 
-        verify(campaignRepository,times(1)).findAll();
+        verify(campaignService, times(1)).getAll();
     }
 }

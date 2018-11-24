@@ -33,13 +33,13 @@ public class CampaignServiceTest {
     public void getById() {
         campaignService.getById("1");
 
-        verify(campaignRepository,times(1)).findOneById("1");
+        verify(campaignRepository, times(1)).findOneById("1");
     }
 
     @Test
     public void getAll() {
         campaignService.getAll();
 
-        verify(campaignRepository,times(1)).findAll();
+        verify(campaignRepository, times(1)).findAll();
     }
 }
