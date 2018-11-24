@@ -1,6 +1,6 @@
-package app.repository;
+package app.campaign;
 
-import app.model.Campaign;
+import app.campaign.Campaign;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

@@ -1,4 +1,4 @@
-package app.model;
+package app.campaign;
 
 import org.springframework.data.annotation.Id;
 

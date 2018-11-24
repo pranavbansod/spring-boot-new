@@ -1,6 +1,7 @@
-package app.controller;
+package app.campaign;
 
-import app.repository.CampaignRepository;
+import app.campaign.CampaignController;
+import app.campaign.CampaignRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

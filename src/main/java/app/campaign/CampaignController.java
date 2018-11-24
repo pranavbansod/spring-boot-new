@@ -1,7 +1,5 @@
-package app.controller;
+package app.campaign;
 
-import app.model.Campaign;
-import app.repository.CampaignRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
